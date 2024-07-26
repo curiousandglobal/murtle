@@ -11,11 +11,13 @@ def send_reminder_emails():
         start_time__gt=now
     )
     for conversation in upcoming_conversations:
-        registrations = Registration.objects.filter(conversation=conversation)
+        registrations = Registration.objects.filter(conversation=conversation, reminder_sent=False)
         for registration in registrations:
             send_mail(
                 'Reminder: Upcoming Conversation',
                 f'This is a reminder that the conversation "{conversation.title}" is starting at {conversation.start_time}.',
-                'from@example.com',
+                'miderzon@gmail.com',
                 [registration.user.email],
             )
+            registration.reminder_sent = True
+            registration.save()

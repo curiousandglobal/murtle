@@ -18,6 +18,7 @@ class Registration(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+    reminder_sent = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.user.email} - {self.conversation.title}'
