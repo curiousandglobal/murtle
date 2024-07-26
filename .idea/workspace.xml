@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5d926e6-d0be-45b2-94bd-fdf7cfca5b94" name="Changes" comment="google oauth stuff not done yet" />
+    <list default="true" id="d5d926e6-d0be-45b2-94bd-fdf7cfca5b94" name="Changes" comment="save commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="event_creation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,8 +57,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "event__creation",
-    "last_opened_file_path": "/Users/MD/PycharmProjects/murtle/murtle/templates",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/MD/PycharmProjects/murtle/murtle",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,6 +70,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/murtle" />
       <recent name="$PROJECT_DIR$/murtle/templates" />
       <recent name="$PROJECT_DIR$/murtle/static/images" />
     </key>
@@ -103,7 +104,7 @@
       <workItem from="1720809880365" duration="2244000" />
       <workItem from="1721238905805" duration="123000" />
       <workItem from="1721333095813" duration="4637000" />
-      <workItem from="1721504617811" duration="4678000" />
+      <workItem from="1721504617811" duration="16891000" />
     </task>
     <task id="LOCAL-00001" summary="Checking if pushes work for me">
       <option name="closed" value="true" />
@@ -201,7 +202,39 @@
       <option name="project" value="LOCAL" />
       <updated>1721767749107</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="automated emails started">
+      <option name="closed" value="true" />
+      <created>1721835646640</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1721835646640</updated>
+    </task>
+    <task id="LOCAL-00014" summary="little fixes and changes to default templates for password reset">
+      <option name="closed" value="true" />
+      <created>1721845776454</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1721845776455</updated>
+    </task>
+    <task id="LOCAL-00015" summary="save commit">
+      <option name="closed" value="true" />
+      <created>1722019537753</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1722019537753</updated>
+    </task>
+    <task id="LOCAL-00016" summary="save commit">
+      <option name="closed" value="true" />
+      <created>1722019544609</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1722019544609</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +301,9 @@
     <MESSAGE value="idk why this needs to be committed but ok" />
     <MESSAGE value="Styling changes and fucntionality for users and admins to see events and admins to create and edit events" />
     <MESSAGE value="google oauth stuff not done yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="google oauth stuff not done yet" />
+    <MESSAGE value="automated emails started" />
+    <MESSAGE value="little fixes and changes to default templates for password reset" />
+    <MESSAGE value="save commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="save commit" />
   </component>
 </project>
