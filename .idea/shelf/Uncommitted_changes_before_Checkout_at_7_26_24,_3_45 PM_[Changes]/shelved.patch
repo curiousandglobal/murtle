@@ -1,0 +1,44 @@
+Index: murtle/convos/models.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Import the custom User model\nfrom django.conf import settings\nfrom django.db import models\n\n\nclass Conversation(models.Model):\n    title = models.CharField(max_length=200)\n    description = models.TextField()\n    date = models.DateField()\n    time = models.TimeField(default=\"00:00\")\n    location = models.CharField(max_length=200)\n\n    def __str__(self):\n        return self.title\n\n\nclass Registration(models.Model):\n    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)\n    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE)\n    timestamp = models.DateTimeField(auto_now_add=True)\n\n    def __str__(self):\n        return f'{self.user.email} - {self.conversation.title}'\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/murtle/convos/models.py b/murtle/convos/models.py
+--- a/murtle/convos/models.py	(revision 618662688dabd2c90a723c32376fa654e4144ed6)
++++ b/murtle/convos/models.py	(date 1721846200911)
+@@ -18,6 +18,7 @@
+     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+     conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE)
+     timestamp = models.DateTimeField(auto_now_add=True)
++    reminder_sent = models.BooleanField(default=False)
+ 
+     def __str__(self):
+         return f'{self.user.email} - {self.conversation.title}'
+Index: murtle/convos/tasks.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from celery import shared_task\nfrom django.utils import timezone\nfrom django.core.mail import send_mail\nfrom .models import Conversation, Registration\n\n@shared_task\ndef send_reminder_emails():\n    now = timezone.now()\n    upcoming_conversations = Conversation.objects.filter(\n        start_time__lte=now + timezone.timedelta(hours=2),\n        start_time__gt=now\n    )\n    for conversation in upcoming_conversations:\n        registrations = Registration.objects.filter(conversation=conversation)\n        for registration in registrations:\n            send_mail(\n                'Reminder: Upcoming Conversation',\n                f'This is a reminder that the conversation \"{conversation.title}\" is starting at {conversation.start_time}.',\n                'from@example.com',\n                [registration.user.email],\n            )\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/murtle/convos/tasks.py b/murtle/convos/tasks.py
+--- a/murtle/convos/tasks.py	(revision 618662688dabd2c90a723c32376fa654e4144ed6)
++++ b/murtle/convos/tasks.py	(date 1721846238216)
+@@ -11,11 +11,13 @@
+         start_time__gt=now
+     )
+     for conversation in upcoming_conversations:
+-        registrations = Registration.objects.filter(conversation=conversation)
++        registrations = Registration.objects.filter(conversation=conversation, reminder_sent=False)
+         for registration in registrations:
+             send_mail(
+                 'Reminder: Upcoming Conversation',
+                 f'This is a reminder that the conversation "{conversation.title}" is starting at {conversation.start_time}.',
+-                'from@example.com',
++                'miderzon@gmail.com',
+                 [registration.user.email],
+             )
++            registration.reminder_sent = True
++            registration.save()
